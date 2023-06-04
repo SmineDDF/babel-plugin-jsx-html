@@ -162,6 +162,16 @@ export function isIdentiferInScope(
   return scope.hasBinding(identifierString);
 }
 
+function identifierStartsWithCapitalLetter(
+  identifier: t.StringLiteral | t.MemberExpression | t.Identifier
+): boolean {
+  const identifierString = getElementNameString(identifier);
+
+  return (
+    identifierString.charAt(0) === identifierString.charAt(0).toUpperCase()
+  );
+}
+
 function convertJSXElementIntoFunctionCall(
   path: NodePath<t.JSXElement>,
   state: PluginPass
@@ -172,7 +182,9 @@ function convertJSXElementIntoFunctionCall(
   const childrenArray = JSXChildrenToArrayExpression(path.node.children);
 
   const element = convertJSXIdentifier(path.node.openingElement.name);
-  const isTemplateElement = isIdentiferInScope(element, path.scope);
+  const isTemplateElement =
+    isIdentiferInScope(element, path.scope) &&
+    identifierStartsWithCapitalLetter(element);
 
   let elementCreationCall;
 
