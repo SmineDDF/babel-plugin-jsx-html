@@ -73,7 +73,7 @@ function hasValue(node: t.Expression | null): boolean {
   return true;
 }
 
-export function JSXAttributesToObjectExpression(
+function JSXAttributesToObjectExpression(
   attributes: t.JSXElement["openingElement"]["attributes"]
 ): t.ObjectExpression {
   const objExpression = t.objectExpression([]);
@@ -105,7 +105,7 @@ export function JSXAttributesToObjectExpression(
   return objExpression;
 }
 
-export function JSXChildrenToArrayExpression(
+function JSXChildrenToArrayExpression(
   children: t.JSXElement["children"]
 ): t.ArrayExpression {
   const arrExpression = t.arrayExpression(
@@ -115,13 +115,13 @@ export function JSXChildrenToArrayExpression(
   return arrExpression;
 }
 
-export function convertJSXIdentifier(
+function convertJSXIdentifier(
   node: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName
 ): t.StringLiteral | t.MemberExpression | t.Identifier {
   return jsxToJs(node);
 }
 
-export function getElementNameString(
+function getElementNameString(
   element: t.StringLiteral | t.MemberExpression | t.Identifier
 ): string {
   switch (element.type) {
@@ -153,7 +153,7 @@ export function getElementNameString(
   }
 }
 
-export function isIdentiferInScope(
+function isIdentiferInScope(
   identifier: t.StringLiteral | t.MemberExpression | t.Identifier,
   scope: NodePath["scope"]
 ): boolean {
