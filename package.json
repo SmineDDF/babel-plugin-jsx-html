@@ -15,6 +15,7 @@
     "./tsconfig": "./lib/tsconfig.json",
     "./types.d.ts": "./lib/types.d.ts"
   },
+  "files": ["/lib", "LICENSE", "README.md"],
   "engines": {
     "node": ">=6.9.0"
   },
