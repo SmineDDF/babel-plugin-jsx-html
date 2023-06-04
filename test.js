@@ -30,7 +30,13 @@ async function run() {
       encoding: "utf8",
     });
 
-    expect(generatedHtml).toEqual(expectedGeneratedHtml);
+    try {
+      expect(generatedHtml).toEqual(expectedGeneratedHtml);
+    } catch (e) {
+      console.error(`Tests failed on suite "${suite}"`);
+
+      throw e;
+    }
   });
 
   console.log(`Successfully ran ${suites.length} test cases`);

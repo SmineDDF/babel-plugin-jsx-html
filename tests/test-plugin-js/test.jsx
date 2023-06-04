@@ -9,6 +9,8 @@ const Foo = {
 };
 const funcCall = () => 123;
 const spread = { a: "spread prop", b: "spread prop 2" };
+// eslint-disable-next-line no-unused-vars
+const lowercaseFirstLetterElementInScope = () => <div>i should not render</div>;
 
 export default () => {
   return (
@@ -22,6 +24,7 @@ export default () => {
         func={funcCall()}
         {...spread}
       >
+        <lowercaseFirstLetterElementInScope />
         123
         {}
         <Template>Jesse</Template>
