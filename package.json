@@ -1,5 +1,5 @@
 {
-  "name": "jsx-html-template",
+  "name": "babel-jsx-html-plugin",
   "version": "1.0.0",
   "description": "Turn JSX templates into HTML string templates",
   "author": "Kirill Lebedev",
