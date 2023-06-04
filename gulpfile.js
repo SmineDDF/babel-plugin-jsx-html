@@ -19,6 +19,6 @@ function copyRest() {
     .pipe(gulp.dest("lib"));
 }
 
-const build = gulp.series(typescript, copyRest);
+const build = gulp.parallel(typescript, copyRest);
 
 exports.default = build;
