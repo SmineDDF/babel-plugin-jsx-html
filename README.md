@@ -34,7 +34,7 @@ npm install babel-plugin-jsx-html
 ```
 or
 ```bash
-yarn babel-plugin-jsx-html
+yarn add babel-plugin-jsx-html
 ```
 
 ## Add plugin
