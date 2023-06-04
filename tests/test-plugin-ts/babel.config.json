@@ -1,0 +1,4 @@
+{
+  "plugins": ["../../lib/plugin", "@babel/transform-modules-commonjs"],
+  "presets": ["@babel/preset-typescript"]
+}
