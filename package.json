@@ -1,12 +1,12 @@
 {
-  "name": "babel-jsx-html-plugin",
+  "name": "babel-plugin-jsx-html",
   "version": "1.0.0",
   "description": "Turn JSX templates into HTML string templates",
   "author": "Kirill Lebedev",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SmineDDF/babel-jsx-html-plugin"
+    "url": "https://github.com/SmineDDF/babel-plugin-jsx-html"
   },
   "main": "./lib/plugin",
   "exports": {
@@ -15,7 +15,11 @@
     "./tsconfig": "./lib/tsconfig.json",
     "./types.d.ts": "./lib/types.d.ts"
   },
-  "files": ["/lib", "LICENSE", "README.md"],
+  "files": [
+    "/lib",
+    "LICENSE",
+    "README.md"
+  ],
   "engines": {
     "node": ">=6.9.0"
   },
@@ -47,7 +51,6 @@
     "@babel/helper-plugin-test-runner": "^7.18.6",
     "@babel/plugin-transform-modules-commonjs": "^7.21.5",
     "@babel/plugin-transform-react-jsx": "^7.22.3",
-    "@babel/preset-env": "^7.22.4",
     "@babel/preset-typescript": "^7.21.5",
     "@babel/traverse": "^7.22.1",
     "@types/babel__core": "^7.20.1",
@@ -56,6 +59,7 @@
     "@types/node": "^18.11.7",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
+    "babel-plugin-jsx-html": "file:babel-plugin-jsx-html-1.0.0.tgz",
     "eslint": "^8.42.0",
     "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-import": "^2.27.5",
@@ -67,7 +71,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "jsx-html-template": "file:.",
     "typescript": "^5.1.3"
   }
 }

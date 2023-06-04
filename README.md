@@ -1,4 +1,17 @@
-# babel-jsx-html-plugin
+- [babel-plugin-jsx-html](#babel-plugin-jsx-html)
+  - [Motivation](#motivation)
+  - [What to use it for](#what-to-use-it-for)
+- [Usage](#usage)
+  - [Install](#install)
+  - [Add plugin](#add-plugin)
+  - [\[optional\] TypeScript](#optional-typescript)
+  - [Create templates with JSX](#create-templates-with-jsx)
+    - [Example](#example)
+- [Contribution](#contribution)
+  - [Prerequisites](#prerequisites)
+  - [Testing \& linting](#testing--linting)
+
+# babel-plugin-jsx-html
 This plugin turns JSX into HTML template functions that return plain HTML string
 when combined.
 
@@ -17,28 +30,31 @@ frameworks.
 Note that this library has runtime dependency, so don't make it `devDependency`.
 
 ```bash
-npm install babel-jsx-html-plugin
+npm install babel-plugin-jsx-html
 ```
 or
 ```bash
-yarn babel-jsx-html-plugin
+yarn babel-plugin-jsx-html
 ```
 
 ## Add plugin
 In your babel.config.json (or any other way of configuring babel):
+
+__note the omitted `babel-plugin` prefix__
+
 ```json
 {
-    "plugins": ["babel-jsx-html-plugin"]
+    "plugins": ["jsx-html"]
 }
 ```
 
 ## [optional] TypeScript
 If you are using TypeScript (`.tsx`), you will also need to extend your
-`tsconfig` from the config from `babel-jsx-html-plugin/tsconfig`:
+`tsconfig` from the config from `babel-plugin-jsx-html/tsconfig`:
 
 ```json
 {
-    "extends": "babel-jsx-html-plugin/tsconfig"
+    "extends": "babel-plugin-jsx-html/tsconfig"
 }
 ```
 This instructs TS to not assume that JSX syntax means "we are using react".
@@ -50,7 +66,7 @@ config parts:
     "compilerOptions": {
         "jsx": "preserve"
     },
-    "include": ["babel-jsx-html-plugin/types.d.ts"]
+    "include": ["babel-plugin-jsx-html/types.d.ts"]
 }
 ```
 
@@ -58,6 +74,9 @@ config parts:
 The templating rules are mostly similar to how it works in React
 with one change: children are not appended to `props`, they are
 passed as separate argument.
+
+Also all properties are html properties, not React properties,
+so you will need to type `class` instead of `className` - just like in plain HTML.
 
 ### Example
 ```jsx
@@ -109,7 +128,7 @@ Running transpiled `Baz` will return you this (as string):
 # Contribution
 ## Prerequisites
 1. Clone the repository
-2. `cd babel-jsx-html-plugin`
+2. `cd babel-plugin-jsx-html`
 3. `npm install`
 4. `npm run build`
 

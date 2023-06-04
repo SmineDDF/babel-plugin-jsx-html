@@ -4,8 +4,8 @@ import * as t from "@babel/types";
 import type { NodePath } from "@babel/traverse";
 import { PluginPass } from "@babel/core";
 
-const RUNTIME_IMPORT_SOURCE = t.stringLiteral("jsx-html-template/runtime");
-const RUNTIME_IMPORT_NAME = t.identifier("_jsx_html_runtime");
+const RUNTIME_IMPORT_SOURCE = t.stringLiteral("babel-plugin-jsx-html/runtime");
+const RUNTIME_IMPORT_NAME = t.identifier("_babel_plugin_jsx_html_runtime");
 const CREATE_NATIVE_ELEMENT_FUNC = t.memberExpression(
   RUNTIME_IMPORT_NAME,
   t.identifier("createNativeElement")
