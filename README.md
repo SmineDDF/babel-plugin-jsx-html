@@ -50,14 +50,14 @@ __note the omitted `babel-plugin` prefix__
 
 ## [optional] TypeScript
 If you are using TypeScript (`.tsx`), you will also need to extend your
-`tsconfig` from the config from `babel-plugin-jsx-html/tsconfig`:
+`tsconfig` from the config at `babel-plugin-jsx-html/tsconfig`:
 
 ```json
 {
     "extends": "babel-plugin-jsx-html/tsconfig"
 }
 ```
-This instructs TS to not assume that JSX syntax means "we are using react".
+This instructs TS to not assume that JSX syntax means "we are using react" and process it, leaving JSX to babel.
 
 If you can't extend tsconfig for some reason, you can directly include needed
 config parts:
