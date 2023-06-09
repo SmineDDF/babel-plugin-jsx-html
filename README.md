@@ -118,7 +118,7 @@ const Baz = () => {
 }
 ```
 
-Transpiled code (prettified):
+Transpiled code:
 ```js
 const Foo = ({ style }, children) => {
     return _babel_plugin_jsx_html_runtime.createNativeElement("div", {
