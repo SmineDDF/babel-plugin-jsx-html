@@ -57,7 +57,7 @@ If you are using TypeScript (`.tsx`), you will also need to extend your
     "extends": "babel-plugin-jsx-html/tsconfig"
 }
 ```
-This instructs TS to not assume that JSX syntax means "we are using react" and process it, leaving JSX to babel.
+This instructs TS to not assume that JSX syntax means "we are using react" and not preprocess it for React.
 
 If you can't extend tsconfig for some reason, you can directly include needed
 config parts:
@@ -71,12 +71,21 @@ config parts:
 ```
 
 ## Create templates with JSX
-The templating rules are mostly similar to how it works in React
-with one change: children are not appended to `props`, they are
-passed as separate argument.
+Generally, it's similar to what you would do with React.
+However, there are differences, of cource, since at the end it's just HTML without JavaScript.
 
-Also all properties are html properties, not React properties,
-so you will need to type `class` instead of `className` - just like in plain HTML.
+### Differences from React JSX
+There are differences from React that you need to keep in mind:
+- there are no hooks, no class components, no context, etc., templates are just
+  pure functions that return jsx elements
+- array of children is passed as the second argument to template functions instead of `chilren` prop
+  `const A = (props, children) => <div>{...children}</div>` instead of `const B = (props) => <div>{props.children}</div>`
+- to be correctly rendered (without `,` symbols, which are an artifact of default array conversion to string), children
+  need to be spred: `{...children}`
+- React has its own names for some html element properties (`className`), also the styles can be written as an object (`style={{ width: 50 }}`),
+  It's not possible to do it here, use plain HTML-way when creating props
+- event handler functions are not supported as props, if you want to use an inline handler, you will need to stringify
+  them like you would do in HTML (`<button onclick="alert(1);" />`)
 
 ### Example
 ```jsx
@@ -107,6 +116,32 @@ const Baz = () => {
         </Foo>
     );
 }
+```
+
+Transpiled code (prettified):
+```js
+const Foo = ({ style }, children) => {
+    return _babel_plugin_jsx_html_runtime.createNativeElement("div", {
+        style: style
+    }, ["Green text before children", ...children]);
+};
+
+const Bar = ({ src }) => {
+    return _babel_plugin_jsx_html_runtime.createNativeElement("div", {
+        style: "background:red;"
+    }, [_babel_plugin_jsx_html_runtime.createNativeElement("img", {
+        src: src,
+        style: "opacity:0.7;"
+    }, [])]);
+};
+
+const Baz = () => {
+    return Foo({
+        style: "color:green;"
+    }, [_babel_plugin_jsx_html_runtime.createNativeElement("div", {}, ["Something before Bar"]), Bar({
+        src: "/some-image.png"
+    }, [])]);
+};
 ```
 
 Running transpiled `Baz` will return you this (as string):
