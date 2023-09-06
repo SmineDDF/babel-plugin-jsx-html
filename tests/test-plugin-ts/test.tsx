@@ -19,6 +19,9 @@ export default () => {
       <div
         data-something="value"
         num={4}
+        shownAsFalseString={false}
+        shownAsBooleanTrueFlag
+        notShownAtAll={undefined}
         amo={<Gus />}
         func={funcCall()}
         {...spread}

@@ -24,8 +24,12 @@ const ALLOWED_PROP_TYPES = {
 };
 
 function stringifyProp<PropType>(key: string, value?: PropType): string {
-  if (!value || value === true) {
+  if (value === true) {
     return key;
+  }
+
+  if (value === undefined) {
+    return "";
   }
 
   if (ALLOWED_PROP_TYPES[typeof value]) {
@@ -39,7 +43,9 @@ function stringifyProp<PropType>(key: string, value?: PropType): string {
 }
 
 function stringifyProps(props: Props): string[] {
-  return Object.entries(props).map(([key, value]) => stringifyProp(key, value));
+  return Object.entries(props)
+    .map(([key, value]) => stringifyProp(key, value))
+    .filter(Boolean);
 }
 
 export function createNativeElement(

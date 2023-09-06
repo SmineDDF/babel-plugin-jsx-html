@@ -18,7 +18,9 @@ export default () => {
       <a href="http://me.example.com">link</a>
       <div
         data-something="value"
-        boolean-data
+        shownAsFalseString={false}
+        shownAsBooleanTrueFlag
+        notShownAtAll={undefined}
         num={4}
         amo={<Gus />}
         func={funcCall()}
